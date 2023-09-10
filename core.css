@@ -1,0 +1,66 @@
+.inline-player{
+    display: inline-block;
+    margin-left: 3rem;
+    height: 2rem;width: 90%;
+    border-radius: 2rem;
+    position: relative;
+    border: solid .1rem gray;
+    transition: width .3s;
+    box-sizing: content-box;
+}
+.inline-player:not([active]){
+    width: 7rem;
+}
+.inline-player:not([active]) > *{
+    display: none;
+}
+.inline-player:not([active])::before{
+    content: url('data:image/svg+xml,<svg fill="none" stroke="gray" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z"></path></svg>');
+    float: left;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: .25rem;
+}
+.inline-player:not([active])::after{
+    content: '点击播放';
+    margin-right: .5rem;
+    display: inline-block;
+    line-height: 2rem;
+    color: gray;
+}
+.inline-player > .ip-btns > div{
+    position: absolute;
+    left: .25rem;
+    top: .25rem;
+    z-index: 1;
+    opacity: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: left .3s,top .3s,width .3s,height .3s,opacity .2s;
+}
+.inline-player > .ip-btns > .ip-paused{
+    color: rgba(245, 245, 245, 0.5);
+    z-index: 3;
+}
+.inline-player:not([play]) > .ip-btns > .ip-paused{
+    opacity: 1;
+}
+.inline-player[play] > .ip-btns > .ip-playing{
+    opacity: 1;
+    left: -2.5rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    top: 0.1rem;
+}
+.inline-player > .ip-prog{
+    position: absolute;
+    border-radius: 2rem;
+    min-width: 2rem;
+    height: 2rem;
+    background-color: gray;
+    display: none;
+    transition: width .3s;
+}
+.inline-player[active] > .ip-prog{
+    display: block;
+}
